@@ -1,160 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weekly Fitness and Meal Plan</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Weekly Fitness & Meal Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8fafc;
+      background-color: #f0f8ff;
     }
-
-    .completed {
+    .card, .accordion-item {
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover, .accordion-button:hover {
+      transform: translateY(-3px);
+      background-color: #e0f7fa;
+    }
+    .strike {
       text-decoration: line-through;
       opacity: 0.6;
+      transition: all 0.3s ease;
     }
-
-    .card:hover {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transform: scale(1.01);
-      transition: 0.3s;
+    .navbar {
+      background-color: #d1c4e9 !important;
+    }
+    header {
+      background-color: #fce4ec;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #7b1fa2;
+    }
+    h5 {
+      color: #00695c;
     }
   </style>
 </head>
-
 <body>
-  <header class="bg-primary text-white text-center py-4 mb-4">
-    <h1>Weekly Fitness and Meal Plan</h1>
-  </header>
 
-  <div class="container mb-5">
-    <!-- Workout Plan Section -->
-    <section>
-      <h2 class="mb-4">Workout Plan</h2>
-      <div class="accordion" id="workoutAccordion">
-        <!-- Monday -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMonday">
-              Monday - Push Day (Chest, Shoulders, Triceps)
-            </button>
-          </h2>
-          <div id="collapseMonday" class="accordion-collapse collapse show" data-bs-parent="#workoutAccordion">
-            <div class="accordion-body">
-              <ul class="list-group">
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Barbell Bench Press</li>
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Dumbbell Shoulder Press</li>
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Incline Dumbbell Press</li>
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Lateral Raises</li>
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Triceps Rope Pushdown</li>
-                <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 exercise">Overhead Triceps Extension</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Add Tuesday, Wednesday, Thursday, Friday similar to above -->
-      </div>
-    </section>
-
-    <!-- Meal Plan Section -->
-    <section class="mt-5">
-      <h2 class="mb-4">Weekly Meal Plan</h2>
-      <div class="row g-3" id="meal-plan">
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Breakfast - Cottage Cheese Protein Pancakes (César: 3, Pamela: 2)</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Snack 1 - Cucumber-Cream Cheese Wraps (César: 6, Pamela: 4)</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Lunch - Tuna Seaweed Burritos (César: 4, Pamela: 2-3)</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Snack 2 - Yogurt & Berries Bowl</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Pre-Workout - Optional Half Protein Shake</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Dinner - Healthy Nachos</label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <label><input type="checkbox" class="form-check-input me-2 meal-checkbox">Snack 3 - Full Protein Shake</label>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Supermarket Shopping List -->
-    <section class="mt-5">
-      <h2 class="mb-4">Supermarket Shopping List</h2>
-      <ul class="list-group" id="shopping-list">
-        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 shopping-checkbox">Cottage cheese (low-fat) – 1.5 kg</li>
-        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 shopping-checkbox">Rolled oats – 800 g</li>
-        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2 shopping-checkbox">Egg whites / Eggs – 2 liters or 2 dozen</li>
-        <!-- Add the remaining shopping list items here -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🏋️‍♂️ Fitness Journey</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#meal-plan">🍽️ Meal Plan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#shopping-list">🛒 Supermarket List</a></li>
+        <li class="nav-item"><a class="nav-link" href="#workout-plan">💪 Workout Plan</a></li>
       </ul>
-    </section>
+    </div>
   </div>
+</nav>
 
-  <!-- Bootstrap 5 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Handle exercises
-      document.querySelectorAll('.exercise').forEach((checkbox, index) => {
-        const checked = localStorage.getItem(`exercise-${index}`) === 'true';
-        checkbox.checked = checked;
-        if (checked) checkbox.parentElement.classList.add('completed');
+<header class="text-center my-5">
+  <h1 class="display-4">🌟 Stay Fit & Fuel Right!</h1>
+  <p class="lead">Track your meals, shopping, and workouts easily! 💥</p>
+</header>
 
-        checkbox.addEventListener('change', function () {
-          this.parentElement.classList.toggle('completed');
-          localStorage.setItem(`exercise-${index}`, this.checked);
-        });
-      });
+<section id="meal-plan" class="container mb-5">
+  <h2 class="mb-4">🍽️ Weekly Meal Plan</h2>
+  <div class="row" id="mealCards"></div>
+</section>
 
-      // Handle meals
-      document.querySelectorAll('.meal-checkbox').forEach((checkbox, index) => {
-        const checked = localStorage.getItem(`meal-${index}`) === 'true';
-        checkbox.checked = checked;
-        if (checked) checkbox.closest('.card').classList.add('completed');
+<section id="shopping-list" class="container mb-5">
+  <h2 class="mb-4">🛒 Supermarket Shopping List</h2>
+  <ul class="list-group" id="shoppingList"></ul>
+</section>
 
-        checkbox.addEventListener('change', function () {
-          this.closest('.card').classList.toggle('completed');
-          localStorage.setItem(`meal-${index}`, this.checked);
-        });
-      });
+<section id="workout-plan" class="container mb-5">
+  <h2 class="mb-4">💪 Weekly Gym Workout Plan</h2>
+  <div class="accordion" id="workoutAccordion"></div>
+</section>
 
-      // Handle shopping list
-      document.querySelectorAll('.shopping-checkbox').forEach((checkbox, index) => {
-        const checked = localStorage.getItem(`shopping-${index}`) === 'true';
-        checkbox.checked = checked;
-        if (checked) checkbox.parentElement.classList.add('completed');
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const links = document.querySelectorAll('.nav-link');
+links.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-        checkbox.addEventListener('change', function () {
-          this.parentElement.classList.toggle('completed');
-          localStorage.setItem(`shopping-${index}`, this.checked);
-        });
-      });
-    });
-  </script>
+const meals = [
+  {time: "5:30 AM", dish: "Cottage Cheese Protein Pancakes 🥞"},
+  {time: "8:30 AM", dish: "Cucumber-Cream Cheese Wraps 🥒"},
+  {time: "12:00 PM", dish: "Tuna Seaweed Burritos 🌯"},
+  {time: "3:00 PM", dish: "Yogurt & Berries Bowl 🍓"},
+  {time: "5:00 PM", dish: "Half Protein Shake 🥤"},
+  {time: "7:00 PM", dish: "Healthy Nachos 🍲"},
+  {time: "9:00 PM", dish: "Full Protein Shake 🥤"},
+];
+
+const shoppingItems = [
+  "Cottage cheese (low-fat) 🧀", "Rolled oats 🌾", "Egg whites or eggs 🥚", "Vanilla whey protein powder 🥛",
+  "Cucumbers 🥒", "Light cream cheese 🧀", "Turkey breast slices 🍗", "Canned tuna 🐟",
+  "Seaweed sheets 🥬", "Shredded lettuce 🥗", "Light mayonnaise 🥫", "Greek yogurt 🍦",
+  "Frozen mixed berries 🍓", "Lean beef mince 🥩", "Baked corn tortillas 🌽",
+  "Salsa (low sugar) 🌶️", "Light shredded cheese 🧀", "Fresh tomatoes 🍅", "Avocados 🥑", "Olive oil spray 🛢️"
+];
+
+const workouts = [
+  {day: "Monday", focus: "Push Day 🔥", exercises: ["Barbell Bench Press", "Dumbbell Shoulder Press", "Incline Dumbbell Press", "Lateral Raises", "Triceps Rope Pushdown", "Overhead Triceps Extension"]},
+  {day: "Tuesday", focus: "Pull Day 💪", exercises: ["Pull-Ups", "Barbell Row", "Lat Pulldown", "Dumbbell Bicep Curls", "Hammer Curls", "Face Pulls"]},
+  {day: "Wednesday", focus: "Legs + Core 🦵", exercises: ["Barbell Back Squat", "Romanian Deadlift", "Walking Lunges", "Leg Press", "Weighted Plank", "Hanging Leg Raises"]},
+  {day: "Thursday", focus: "Full Body Strength 🏋️", exercises: ["Deadlifts", "Overhead Press", "Weighted Pull-ups", "Front Squats", "Farmers Walk"]},
+  {day: "Friday", focus: "Conditioning + Cardio 🏃‍♂️", exercises: ["Treadmill Incline Walk", "Rowing Machine Sprints", "Russian Twists", "Cable Woodchoppers", "Deep Squat Mobility"]}
+];
+
+const mealCards = document.getElementById('mealCards');
+meals.forEach((meal, index) => {
+  const checked = localStorage.getItem(`meal-${index}`) === 'true' ? 'checked' : '';
+  mealCards.innerHTML += `
+    <div class="col-md-4 mb-3">
+      <div class="card p-3">
+        <h5 class="card-title">${meal.time}</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="meal-${index}" ${checked}>
+          <label class="form-check-label ${checked ? 'strike' : ''}" for="meal-${index}">${meal.dish}</label>
+        </div>
+      </div>
+    </div>
+  `;
+});
+
+const shoppingList = document.getElementById('shoppingList');
+shoppingItems.forEach((item, index) => {
+  const checked = localStorage.getItem(`item-${index}`) === 'true' ? 'checked' : '';
+  shoppingList.innerHTML += `
+    <li class="list-group-item">
+      <input class="form-check-input me-2" type="checkbox" id="item-${index}" ${checked}>
+      <label class="form-check-label ${checked ? 'strike' : ''}" for="item-${index}">${item}</label>
+    </li>
+  `;
+});
+
+const workoutAccordion = document.getElementById('workoutAccordion');
+workouts.forEach((workout, dayIndex) => {
+  let exercisesHTML = '';
+  workout.exercises.forEach((exercise, exIndex) => {
+    const checked = localStorage.getItem(`exercise-${dayIndex}-${exIndex}`) === 'true' ? 'checked' : '';
+    exercisesHTML += `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="exercise-${dayIndex}-${exIndex}" ${checked}>
+        <label class="form-check-label ${checked ? 'strike' : ''}" for="exercise-${dayIndex}-${exIndex}">${exercise}</label>
+      </div>
+    `;
+  });
+
+  workoutAccordion.innerHTML += `
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading${dayIndex}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${dayIndex}" aria-expanded="false">
+          ${workout.day}: ${workout.focus}
+        </button>
+      </h2>
+      <div id="collapse${dayIndex}" class="accordion-collapse collapse" data-bs-parent="#workoutAccordion">
+        <div class="accordion-body">
+          ${exercisesHTML}
+        </div>
+      </div>
+    </div>
+  `;
+});
+
+function saveState(type, id) {
+  const input = document.getElementById(id);
+  input.addEventListener('change', () => {
+    localStorage.setItem(id, input.checked);
+    input.nextElementSibling.classList.toggle('strike', input.checked);
+  });
+}
+
+meals.forEach((_, index) => saveState('meal', `meal-${index}`));
+shoppingItems.forEach((_, index) => saveState('item', `item-${index}`));
+workouts.forEach((workout, dayIndex) => {
+  workout.exercises.forEach((_, exIndex) => saveState('exercise', `exercise-${dayIndex}-${exIndex}`));
+});
+</script>
+
 </body>
-
 </html>
-
