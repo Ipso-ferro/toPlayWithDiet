@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weekly Meal Plan & Supermarket List</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      background-color: #dbeafe;
+      color: #1e3a8a;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    section {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #2563eb;
+    }
+
+    .meal-plan {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .meal-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 1rem;
+      background-color: #f0f9ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .meal-card.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .meal-card input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+
+    .shopping-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .shopping-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      background-color: #fef9c3;
+    }
+
+    .shopping-item.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .shopping-item input[type="checkbox"] {
+      margin-right: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Weekly Plan & Supermarket List</header>
+
+<main>
+
+  <!-- Weekly Meal Plan Section -->
+  <section id="meal-section">
+    <h2>Weekly Meal Plan</h2>
+    <div class="meal-plan" id="meal-plan">
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Breakfast - Cottage Cheese Protein Pancakes</strong><br>
+          César: 3 pancakes (~400g)<br>
+          Pamela: 2 pancakes (~250g)
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Snack 1 - Cucumber-Cream Cheese Wraps</strong><br>
+          César: 6 wraps<br>
+          Pamela: 4 wraps
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Lunch - Tuna Seaweed Burritos</strong><br>
+          César: 4 wraps<br>
+          Pamela: 2–3 wraps
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Snack 2 - Yogurt & Berries Bowl</strong><br>
+          César: 250g yogurt + 100g berries<br>
+          Pamela: 200g yogurt + 70g berries
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Pre-Workout - Optional Half Protein Shake</strong><br>
+          ½ scoop whey protein in water (both)
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Dinner - Healthy Nachos</strong><br>
+          César: 200g beef mince + 40g cheese<br>
+          Pamela: 150g beef mince + 30g cheese
+        </label>
+      </div>
+
+      <div class="meal-card">
+        <label>
+          <input type="checkbox" class="meal-checkbox">
+          <strong>Snack 3 - Full Protein Shake</strong><br>
+          1 scoop whey + water (both)
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supermarket Shopping List Section -->
+  <section id="shopping-section">
+    <h2>Supermarket Shopping List</h2>
+    <ul class="shopping-list" id="shopping-list">
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Cottage cheese (low-fat) – 1.5 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Rolled oats – 800 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Egg whites / Eggs – 2 liters or 2 dozen</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Vanilla whey protein – 1 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Cucumber – 7 units</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Light cream cheese – 400 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Turkey breast slices (lean deli) – 600 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Tuna (canned, spring water) – 6 cans (95g each)</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Seaweed sheets – 1 large pack (50 sheets)</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Shredded lettuce – 2 bags (300g each)</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Light mayonnaise – 250 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Greek yogurt (high-protein) – 2.5 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Frozen mixed berries – 1.5 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Lean beef mince (5-star) – 2.2 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Baked corn tortillas – 1 large pack (30 tortillas)</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Salsa (low sugar) – 500 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Light shredded cheese – 400 g</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Fresh tomatoes – 1 kg</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Avocado (optional) – 3 small</label></li>
+      <li class="shopping-item"><label><input type="checkbox" class="shopping-checkbox"> Olive oil spray – 1 can</label></li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+  document.querySelectorAll('.meal-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      this.closest('.meal-card').classList.toggle('completed', this.checked);
+    });
+  });
+
+  document.querySelectorAll('.shopping-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      this.closest('.shopping-item').classList.toggle('completed', this.checked);
+    });
+  });
+</script>
+
+</body>
+</html>
